@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class CustomAdapter(private var photoList: List<PhotoModel>) :
     RecyclerView.Adapter<CustomAdapter.PhotoViewHolder>() {
     override fun onCreateViewHolder(
+        // Creates the view in case the layout manager fails to create view for the data
         parent: ViewGroup,
         viewType: Int
     ): CustomAdapter.PhotoViewHolder {
@@ -22,7 +23,8 @@ class CustomAdapter(private var photoList: List<PhotoModel>) :
     }
 
     override fun onBindViewHolder(holder: CustomAdapter.PhotoViewHolder, position: Int) {
-        val ItemsViewModel = photoList[position]
+        // Binds the data to the view, populating the view with the data
+        val ItemsViewModel = photoList[position] // Accessing Current data
 
         holder.imageView.setImageResource(ItemsViewModel.image)
         holder.textView.text = ItemsViewModel.text
@@ -38,7 +40,8 @@ class CustomAdapter(private var photoList: List<PhotoModel>) :
         return photoList.size
     }
 
-    class PhotoViewHolder(ItemView: View): RecyclerView.ViewHolder(ItemView) {
+    class PhotoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        // Holds the view or the data?: The view
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
         val textView: TextView = itemView.findViewById(R.id.textView)
     }
