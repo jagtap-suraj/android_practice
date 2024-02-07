@@ -1,3 +1,3 @@
 package com.example.recyclerview
 
-class ItemsViewModel(val image: Int, val text: String)
+class PhotoModel(val image: Int, val text: String)
