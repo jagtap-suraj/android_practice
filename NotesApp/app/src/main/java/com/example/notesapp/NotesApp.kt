@@ -19,14 +19,6 @@ class NotesApp : Application() {
 
     private fun initializeObjectBox() {
         boxStore = MyObjectBox.builder().androidContext(this).build()
-
-        // Enable ObjectBox browser (for debugging)
-//        if (BuildConfig.DEBUG) {
-//            val started =  AndroidObjectBrowser(boxStore).start(this)
-//            Log.i("ObjectBrowser", "Started: $started")
-//        }
-//        val started =  AndroidObjectBrowser(boxStore).start(this)
-//            Log.i("ObjectBrowser", "Started: $started")
         val started = Admin(boxStore).start(this)
         Log.i("ObjectBrowser", "Started: $started")
     }
