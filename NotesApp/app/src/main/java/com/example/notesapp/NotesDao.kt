@@ -3,13 +3,15 @@ package com.example.notesapp
 import io.objectbox.Box
 import io.objectbox.BoxStore
 
-class NotesDao(private val notesBox: BoxStore) {
+class NotesDao(private val boxStore: BoxStore) {
 
-    fun insert(note: Note) {
-        notesBox.boxFor(Note::class.java).put(note)
+    val notesBox = boxStore.boxFor(Note::class.java)
+
+    fun insert(note: Note): Long {
+       return notesBox.put(note)
     }
 
     fun getAllNotes(): List<Note> {
-        return notesBox.boxFor(Note::class.java).all
+        return notesBox.all
     }
 }
